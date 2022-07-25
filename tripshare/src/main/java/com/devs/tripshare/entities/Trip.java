@@ -1,4 +1,4 @@
-package com.devs.tripshare.entity;
+package com.devs.tripshare.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

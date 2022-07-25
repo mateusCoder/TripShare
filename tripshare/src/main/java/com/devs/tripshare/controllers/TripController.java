@@ -1,4 +1,4 @@
-package com.devs.tripshare.controller;
+package com.devs.tripshare.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/trips")
 public class TripController{
 
-    
+
 }
