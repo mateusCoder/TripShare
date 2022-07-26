@@ -5,6 +5,10 @@ import com.devs.tripshare.dto.ride.RideFormDto;
 import com.devs.tripshare.entities.Ride;
 import com.devs.tripshare.services.RideServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +21,11 @@ import java.util.Optional;
 public class RideController {
 
     private final RideServiceImpl service;
+
+    @GetMapping
+    public ResponseEntity<Page<RideDto>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable page){
+        return ResponseEntity.ok().body(service.findAll(page));
+    }
 
     @Transactional
     @PostMapping

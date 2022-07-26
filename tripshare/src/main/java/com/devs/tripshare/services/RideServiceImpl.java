@@ -1,5 +1,6 @@
 package com.devs.tripshare.services;
 
+import com.devs.tripshare.dto.ride.RideDto;
 import com.devs.tripshare.dto.ride.RideFormDto;
 import com.devs.tripshare.entities.Person;
 import com.devs.tripshare.entities.Ride;
@@ -10,6 +11,9 @@ import com.devs.tripshare.repository.TripRepository;
 import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -18,6 +22,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RideServiceImpl implements RideService{
@@ -37,8 +42,14 @@ public class RideServiceImpl implements RideService{
     private RuntimeException objectNotFoundEx = new RuntimeException("Object Not Found!");
 
     @Override
+    public Page<RideDto> findAll(Pageable page) {
+        Page<Ride> ride = rideRepository.findAll(page);
+        return new PageImpl<>(ride.stream().map(e -> modelMapper.map(ride, RideDto.class)).collect(Collectors.toList()));
+    }
+
+    @Override
     public URI saveRide(RideFormDto rideFormDto) {
-        Ride ride = modelMapper.map(rideFormDto, Ride.class);
+        Ride ride = new Ride();
         List<Person> crewMembers = new ArrayList<>();
 
         rideFormDto.getCrewMembers().forEach(
@@ -66,12 +77,13 @@ public class RideServiceImpl implements RideService{
         rideRepository.deleteById(id);
     }
 
+
     private Ride checkExistence(Long id){
         Optional<Ride> ride = rideRepository.findById(id);
         if( ride.isPresent()){
             return ride.get();
         }else{
-            throw new RuntimeException("Ride not found");
+            throw objectNotFoundEx;
         }
     }
 

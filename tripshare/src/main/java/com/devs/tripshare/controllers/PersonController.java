@@ -2,7 +2,6 @@ package com.devs.tripshare.controllers;
 
 import com.devs.tripshare.dto.person.PersonDto;
 import com.devs.tripshare.dto.person.PersonForm;
-import com.devs.tripshare.entities.Person;
 import com.devs.tripshare.services.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
