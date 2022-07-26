@@ -9,9 +9,11 @@ import java.net.URI;
 
 public interface RideService {
 
-    URI saveRide(RideFormDto rideFormDto);
+    Page<RideDto> findAll(Pageable page);
 
     void deleteById(Long id);
 
-    Page<RideDto> findAll(Pageable page);
+    URI saveRide(RideFormDto rideFormDto);
+
+    RideDto findById(Long id);
 }

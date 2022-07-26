@@ -1,5 +1,6 @@
 package com.devs.tripshare.services;
 
+import com.devs.tripshare.dto.person.PersonDto;
 import com.devs.tripshare.dto.ride.RideDto;
 import com.devs.tripshare.dto.ride.RideFormDto;
 import com.devs.tripshare.entities.Person;
@@ -8,6 +9,7 @@ import com.devs.tripshare.entities.Trip;
 import com.devs.tripshare.repository.PersonRepository;
 import com.devs.tripshare.repository.RideRepository;
 import com.devs.tripshare.repository.TripRepository;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,13 @@ public class RideServiceImpl implements RideService{
     @Override
     public Page<RideDto> findAll(Pageable page) {
         Page<Ride> ride = rideRepository.findAll(page);
-        return new PageImpl<>(ride.stream().map(e -> modelMapper.map(ride, RideDto.class)).collect(Collectors.toList()));
+        return ride.map(e -> modelMapper.map(e, RideDto.class));
+    }
+
+    @Override
+    public RideDto findById(Long id) {
+        Ride ride = checkExistence(id);
+        return modelMapper.map(ride, RideDto.class);
     }
 
     @Override

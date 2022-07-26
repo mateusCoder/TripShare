@@ -27,6 +27,11 @@ public class RideController {
         return ResponseEntity.ok().body(service.findAll(page));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<RideDto> findById(@PathVariable Long id){
+        return ResponseEntity.ok().body(service.findById(id));
+    }
+
     @Transactional
     @PostMapping
     public ResponseEntity<RideDto> save(@RequestBody RideFormDto rideFormDto){
