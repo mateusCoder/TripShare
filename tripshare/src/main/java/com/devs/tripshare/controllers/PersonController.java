@@ -32,6 +32,12 @@ public class PersonController {
     }
 
     @Transactional
+    @PostMapping
+    public ResponseEntity<PersonDto> create(@RequestBody PersonForm personForm){
+        return ResponseEntity.created(service.create(personForm)).build();
+    }
+
+    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<PersonDto> update(@PathVariable Long id, @RequestBody PersonForm personForm){
         return ResponseEntity.ok().body(service.update(id, personForm));

@@ -10,7 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -48,6 +50,13 @@ public class PersonServiceImpl implements PersonService{
     public void deleteById(Long id) {
         checkExistence(id);
         repository.deleteById(id);
+    }
+
+    @Override
+    public URI create(PersonForm personForm) {
+        Person person = mapper.map(personForm, Person.class);
+        repository.save(person);
+        return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build(person.getId());
     }
 
     private Person checkExistence(Long id){

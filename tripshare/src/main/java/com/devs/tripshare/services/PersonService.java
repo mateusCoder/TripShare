@@ -5,6 +5,8 @@ import com.devs.tripshare.dto.person.PersonForm;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.net.URI;
+
 public interface PersonService{
 
    Page<PersonDto> findAll(Pageable page);
@@ -14,4 +16,6 @@ public interface PersonService{
     PersonDto update(Long id, PersonForm personForm);
 
     void deleteById(Long id);
+
+    URI create(PersonForm personForm);
 }
