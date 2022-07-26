@@ -13,7 +13,6 @@ import java.util.List;
 public class RideFormDto {
 
     private List<String> crewMembers;
-
     private Long tripId;
 
 }

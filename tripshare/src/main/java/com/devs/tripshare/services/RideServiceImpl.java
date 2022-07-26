@@ -10,13 +10,16 @@ import com.devs.tripshare.repository.TripRepository;
 import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class RideServiceImpl implements RideService{
 
     @Autowired
@@ -55,6 +58,21 @@ public class RideServiceImpl implements RideService{
         rideRepository.save(ride);
 
         return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ride.getId()).toUri();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        checkExistence(id);
+        rideRepository.deleteById(id);
+    }
+
+    private Ride checkExistence(Long id){
+        Optional<Ride> ride = rideRepository.findById(id);
+        if( ride.isPresent()){
+            return ride.get();
+        }else{
+            throw new RuntimeException("Ride not found");
+        }
     }
 
 }

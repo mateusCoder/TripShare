@@ -7,4 +7,6 @@ import java.net.URI;
 public interface RideService {
 
     URI saveRide(RideFormDto rideFormDto);
+
+    void deleteById(Long id);
 }
