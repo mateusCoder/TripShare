@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,6 @@ public class RideServiceImpl implements RideService{
     @Override
     public URI saveRide(RideFormDto rideFormDto) {
         Ride ride = modelMapper.map(rideFormDto, Ride.class);
-
         List<Person> crewMembers = new ArrayList<>();
 
         rideFormDto.getCrewMembers().forEach(
@@ -46,8 +46,11 @@ public class RideServiceImpl implements RideService{
 
         Trip trip = tripRepository.findById(rideFormDto.getTripId()).orElseThrow(() -> objectNotFoundEx);
 
+        BigDecimal finalPrice = BigDecimal.valueOf(((trip.getDistance() / trip.getFuelUse()) * trip.getFuelPrice()) / crewMembers.size());
+
         ride.setCrewMembers(crewMembers);
         ride.setTrip(trip);
+        ride.setDailyPrecimal(finalPrice);
 
         rideRepository.save(ride);
 

@@ -16,6 +16,4 @@ public class RideFormDto {
 
     private Long tripId;
 
-    private BigDecimal dailyPrecimal;
-
 }
