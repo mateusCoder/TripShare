@@ -1,6 +1,7 @@
 package com.devs.tripshare.services;
 
 import com.devs.tripshare.dto.person.PersonDto;
+import com.devs.tripshare.dto.person.PersonForm;
 import com.devs.tripshare.entities.Person;
 import com.devs.tripshare.repository.PersonRepository;
 import org.modelmapper.ModelMapper;
@@ -31,6 +32,22 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public PersonDto findById(Long id) {
         return mapper.map(checkExistence(id), PersonDto.class);
+    }
+
+    @Override
+    public PersonDto update(Long id, PersonForm personForm) {
+        checkExistence(id);
+        Person person = mapper.map(personForm, Person.class);
+        person.setId(id);
+        repository.save(person);
+
+        return mapper.map(person, PersonDto.class);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        checkExistence(id);
+        repository.deleteById(id);
     }
 
     private Person checkExistence(Long id){
