@@ -35,7 +35,7 @@ public class RideServiceImpl implements RideService{
 
     @Override
     public URI saveRide(RideFormDto rideFormDto) {
-        Ride ride = modelMapper.map(rideFormDto, Ride.class);
+        Ride ride = new Ride();
         List<Person> crewMembers = new ArrayList<>();
 
         rideFormDto.getCrewMembers().forEach(
