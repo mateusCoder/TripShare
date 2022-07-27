@@ -4,13 +4,15 @@ import com.devs.tripshare.dto.trip.TripDto;
 import com.devs.tripshare.dto.trip.TripForm;
 import com.devs.tripshare.entities.Trip;
 import com.devs.tripshare.repository.TripRepository;
-import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TripServiceImpl implements TripService{
@@ -22,14 +24,20 @@ public class TripServiceImpl implements TripService{
     TripRepository repository;
 
     @Override
-    public void deleteById(Long id) {
-    findById(id);
-    repository.deleteById(id);
+    public Page<TripDto> findAll(Pageable page) {
+        Page<Trip> trip = repository.findAll(page);
+        Page<TripDto> tripDtos = new PageImpl<>(trip.stream().map(e -> mapper.map(e, TripDto.class)).collect(Collectors.toList()));
+        return tripDtos;
+    }
+
+    @Override
+    public TripDto findById(Long id) {
+        return mapper.map(checkExistence(id), TripDto.class);
     }
 
     @Override
     public TripDto update(Long id, TripForm tripForm) {
-        findById(id);
+        checkExistence(id);
         Trip trip = mapper.map(tripForm, Trip.class);
         trip.setId(id);
         repository.save(trip);
@@ -37,7 +45,14 @@ public class TripServiceImpl implements TripService{
         return mapper.map(trip, TripDto.class);
     }
 
-    public Trip findById(Long id){
+
+    @Override
+    public void deleteById(Long id) {
+        checkExistence(id);
+        repository.deleteById(id);
+    }
+
+    public Trip checkExistence(Long id){
         Optional<Trip> trip = repository.findById(id);
         if(trip.isPresent()){
             return trip.get();

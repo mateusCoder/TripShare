@@ -5,6 +5,10 @@ import com.devs.tripshare.dto.trip.TripForm;
 import com.devs.tripshare.entities.Trip;
 import com.devs.tripshare.services.TripServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +20,16 @@ public class TripController{
 
     @Autowired
     TripServiceImpl service;
+
+    @GetMapping
+    public ResponseEntity<Page<TripDto>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable page){
+        return ResponseEntity.ok().body(service.findAll(page));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TripDto> findById(@PathVariable Long id){
+        return ResponseEntity.ok().body(service.findById(id));
+    }
 
     @Transactional
     @PutMapping("/{id}")
