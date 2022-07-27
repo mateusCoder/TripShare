@@ -1,5 +1,7 @@
 package com.devs.tripshare.services;
 
+import com.devs.tripshare.dto.trip.TripDto;
+import com.devs.tripshare.dto.trip.TripForm;
 import com.devs.tripshare.entities.Trip;
 import com.devs.tripshare.repository.TripRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -23,6 +25,16 @@ public class TripServiceImpl implements TripService{
     public void deleteById(Long id) {
     findById(id);
     repository.deleteById(id);
+    }
+
+    @Override
+    public TripDto update(Long id, TripForm tripForm) {
+        findById(id);
+        Trip trip = mapper.map(tripForm, Trip.class);
+        trip.setId(id);
+        repository.save(trip);
+
+        return mapper.map(trip, TripDto.class);
     }
 
     public Trip findById(Long id){
