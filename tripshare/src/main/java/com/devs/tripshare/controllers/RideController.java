@@ -1,10 +1,10 @@
 package com.devs.tripshare.controllers;
 
-import com.devs.tripshare.dto.trip.TripDto;
-import com.devs.tripshare.dto.trip.TripForm;
-import com.devs.tripshare.entities.Trip;
-import com.devs.tripshare.services.TripServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.devs.tripshare.dto.ride.RideDto;
+import com.devs.tripshare.dto.ride.RideFormDto;
+import com.devs.tripshare.entities.Ride;
+import com.devs.tripshare.services.RideServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,28 +13,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/tripshare/trips")
-public class TripController{
+@RequiredArgsConstructor
+@RequestMapping("/tripshare/rides")
+public class RideController {
 
-    @Autowired
-    TripServiceImpl service;
+    private final RideServiceImpl service;
 
     @GetMapping
-    public ResponseEntity<Page<TripDto>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC)Pageable page){
+    public ResponseEntity<Page<RideDto>> findAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable page){
         return ResponseEntity.ok().body(service.findAll(page));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TripDto> findById(@PathVariable Long id){
+    public ResponseEntity<RideDto> findById(@PathVariable Long id){
         return ResponseEntity.ok().body(service.findById(id));
     }
 
     @Transactional
-    @PutMapping("/{id}")
-    public ResponseEntity<TripDto> update(@PathVariable Long id, @RequestBody TripForm tripForm){
-        return ResponseEntity.ok().body(service.update(id, tripForm));
+    @PostMapping
+    public ResponseEntity<RideDto> save(@RequestBody RideFormDto rideFormDto){
+        return ResponseEntity.created(service.saveRide(rideFormDto)).build();
     }
 
     @Transactional
@@ -43,5 +44,7 @@ public class TripController{
         service.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
+
 
 }
