@@ -1,27 +1,31 @@
 package com.devs.tripshare.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Setter
-@Getter
+@NoArgsConstructor
 @Entity
-public class Person {
-
+public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    private boolean driver;
-    private String email;
-    private String password;
+
+    private Double distance;
+
+    private Double fuelUse;
+
+    private Double fuelPrice;
+
+    private LocalDate date;
 }
