@@ -32,6 +32,12 @@ public class TripController{
     }
 
     @Transactional
+    @PostMapping
+    public ResponseEntity<TripDto> create(@RequestBody TripForm tripForm){
+        return ResponseEntity.created(service.create(tripForm)).build();
+    }
+
+    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<TripDto> update(@PathVariable Long id, @RequestBody TripForm tripForm){
         return ResponseEntity.ok().body(service.update(id, tripForm));
