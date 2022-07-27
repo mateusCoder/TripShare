@@ -1,14 +1,13 @@
 package com.devs.tripshare.exceptions;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class StandardError {
 
     private Instant timeStamp;

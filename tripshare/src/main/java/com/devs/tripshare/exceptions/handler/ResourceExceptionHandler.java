@@ -1,7 +1,7 @@
 package com.devs.tripshare.exceptions.handler;
 
+import com.devs.tripshare.exceptions.ObjectNotFound;
 import com.devs.tripshare.exceptions.StandardError;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -15,8 +15,8 @@ import java.time.Instant;
 @RestControllerAdvice
 public class ResourceExceptionHandler   {
 
-    @ExceptionHandler(ObjectNotFoundException.class)
-    public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException ex,
+    @ExceptionHandler(ObjectNotFound.class)
+    public ResponseEntity<StandardError> objectNotFound(ObjectNotFound ex,
                                                         HttpServletRequest request){
         StandardError error = new StandardError(
                 Instant.now(),
@@ -29,8 +29,7 @@ public class ResourceExceptionHandler   {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ValidationError> validation(MethodArgumentNotValidException ex,
-                                                        HttpServletRequest request){
+    public ResponseEntity<ValidationError> validation(MethodArgumentNotValidException ex){
         ValidationError error = new ValidationError();
 
         for(FieldError f : ex.getBindingResult().getFieldErrors()){
