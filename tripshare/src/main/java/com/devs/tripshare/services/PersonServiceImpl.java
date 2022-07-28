@@ -3,6 +3,7 @@ package com.devs.tripshare.services;
 import com.devs.tripshare.dto.person.PersonDto;
 import com.devs.tripshare.dto.person.PersonForm;
 import com.devs.tripshare.entities.Person;
+import com.devs.tripshare.exceptions.ObjectNotFound;
 import com.devs.tripshare.repository.PersonRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +65,7 @@ public class PersonServiceImpl implements PersonService{
         if(person.isPresent()){
             return person.get();
         } else {
-            throw new RuntimeException("Person not found!");
+            throw new ObjectNotFound("Person not found");
         }
     }
 }
