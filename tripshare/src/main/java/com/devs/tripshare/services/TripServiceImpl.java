@@ -3,6 +3,7 @@ package com.devs.tripshare.services;
 import com.devs.tripshare.dto.trip.TripDto;
 import com.devs.tripshare.dto.trip.TripForm;
 import com.devs.tripshare.entities.Trip;
+import com.devs.tripshare.exceptions.ObjectNotFound;
 import com.devs.tripshare.repository.TripRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +66,7 @@ public class TripServiceImpl implements TripService{
         if(trip.isPresent()){
             return trip.get();
         }else{
-            throw new RuntimeException("Trip not found!");
+            throw new ObjectNotFound("Trip not found!");
         }
     }
 }

@@ -2,7 +2,6 @@ package com.devs.tripshare.controllers;
 
 import com.devs.tripshare.dto.trip.TripDto;
 import com.devs.tripshare.dto.trip.TripForm;
-import com.devs.tripshare.entities.Trip;
 import com.devs.tripshare.services.TripServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/tripshare/trips")
@@ -33,13 +33,13 @@ public class TripController{
 
     @Transactional
     @PostMapping
-    public ResponseEntity<TripDto> create(@RequestBody TripForm tripForm){
+    public ResponseEntity<TripDto> create(@Valid @RequestBody TripForm tripForm){
         return ResponseEntity.created(service.create(tripForm)).build();
     }
 
     @Transactional
     @PutMapping("/{id}")
-    public ResponseEntity<TripDto> update(@PathVariable Long id, @RequestBody TripForm tripForm){
+    public ResponseEntity<TripDto> update(@PathVariable Long id, @Valid @RequestBody TripForm tripForm){
         return ResponseEntity.ok().body(service.update(id, tripForm));
     }
 
