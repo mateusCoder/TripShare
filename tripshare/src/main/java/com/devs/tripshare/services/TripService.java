@@ -5,6 +5,8 @@ import com.devs.tripshare.dto.trip.TripForm;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.net.URI;
+
 public interface TripService{
     void deleteById(Long id);
 
@@ -13,4 +15,6 @@ public interface TripService{
     Page<TripDto> findAll(Pageable page);
 
     TripDto findById(Long id);
+
+    URI create(TripForm tripForm);
 }

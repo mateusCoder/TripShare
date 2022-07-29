@@ -3,6 +3,7 @@ package com.devs.tripshare.services;
 import com.devs.tripshare.dto.trip.TripDto;
 import com.devs.tripshare.dto.trip.TripForm;
 import com.devs.tripshare.entities.Trip;
+import com.devs.tripshare.exceptions.ObjectNotFound;
 import com.devs.tripshare.repository.TripRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -36,6 +39,13 @@ public class TripServiceImpl implements TripService{
     }
 
     @Override
+    public URI create(TripForm tripForm) {
+        Trip trip = mapper.map(tripForm, Trip.class);
+        repository.save(trip);
+        return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build(trip.getId());
+    }
+
+    @Override
     public TripDto update(Long id, TripForm tripForm) {
         checkExistence(id);
         Trip trip = mapper.map(tripForm, Trip.class);
@@ -44,7 +54,6 @@ public class TripServiceImpl implements TripService{
 
         return mapper.map(trip, TripDto.class);
     }
-
 
     @Override
     public void deleteById(Long id) {
@@ -57,7 +66,7 @@ public class TripServiceImpl implements TripService{
         if(trip.isPresent()){
             return trip.get();
         }else{
-            throw new RuntimeException("Trip not found!");
+            throw new ObjectNotFound("Trip not found!");
         }
     }
 }
