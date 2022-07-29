@@ -17,7 +17,7 @@ public class Ride {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @ManyToMany
     private List<Person> crewMembers;
 
     @OneToOne
@@ -25,5 +25,4 @@ public class Ride {
     private Trip trip;
 
     private BigDecimal dailyPrecimal;
-
 }

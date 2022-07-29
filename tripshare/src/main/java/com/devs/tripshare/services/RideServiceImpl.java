@@ -56,6 +56,7 @@ public class RideServiceImpl implements RideService{
 
     @Override
     public URI saveRide(RideFormDto rideFormDto) {
+
         Ride ride = new Ride();
         List<Person> crewMembers = new ArrayList<>();
 
