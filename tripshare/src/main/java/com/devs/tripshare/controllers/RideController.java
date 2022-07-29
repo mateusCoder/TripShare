@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -34,7 +35,7 @@ public class RideController {
 
     @Transactional
     @PostMapping
-    public ResponseEntity<RideDto> save(@RequestBody RideFormDto rideFormDto){
+    public ResponseEntity<RideDto> save(@Valid @RequestBody RideFormDto rideFormDto){
         return ResponseEntity.created(service.saveRide(rideFormDto)).build();
     }
 
@@ -44,7 +45,5 @@ public class RideController {
         service.deleteById(id);
         return ResponseEntity.ok().build();
     }
-
-
 
 }
