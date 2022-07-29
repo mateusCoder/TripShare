@@ -6,6 +6,7 @@ import com.devs.tripshare.dto.ride.RideFormDto;
 import com.devs.tripshare.entities.Person;
 import com.devs.tripshare.entities.Ride;
 import com.devs.tripshare.entities.Trip;
+import com.devs.tripshare.exceptions.ObjectNotFound;
 import com.devs.tripshare.repository.PersonRepository;
 import com.devs.tripshare.repository.RideRepository;
 import com.devs.tripshare.repository.TripRepository;
@@ -41,8 +42,6 @@ public class RideServiceImpl implements RideService{
     @Autowired
     private ModelMapper modelMapper;
 
-    private RuntimeException objectNotFoundEx = new RuntimeException("Object Not Found!");
-
     @Override
     public Page<RideDto> findAll(Pageable page) {
         Page<Ride> ride = rideRepository.findAll(page);
@@ -62,11 +61,11 @@ public class RideServiceImpl implements RideService{
 
         rideFormDto.getCrewMembers().forEach(
                 e -> {
-                    Person person = personRepository.findByName(e).orElseThrow(() -> objectNotFoundEx);
+                    Person person = personRepository.findByName(e).orElseThrow(() -> new ObjectNotFound("Ride Not found"));
                     crewMembers.add(person);
                 });
 
-        Trip trip = tripRepository.findById(rideFormDto.getTripId()).orElseThrow(() -> objectNotFoundEx);
+        Trip trip = tripRepository.findById(rideFormDto.getTripId()).orElseThrow(() -> new ObjectNotFound("Ride Not found"));
 
         BigDecimal finalPrice = BigDecimal.valueOf(((trip.getDistance() / trip.getFuelUse()) * trip.getFuelPrice()) / crewMembers.size());
 
@@ -91,7 +90,7 @@ public class RideServiceImpl implements RideService{
         if( ride.isPresent()){
             return ride.get();
         }else{
-            throw objectNotFoundEx;
+            throw new ObjectNotFound("Person Not found");
         }
     }
 
