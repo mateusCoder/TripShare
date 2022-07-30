@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/tripshare/people")
@@ -32,13 +33,13 @@ public class PersonController {
 
     @Transactional
     @PostMapping
-    public ResponseEntity<PersonDto> create(@RequestBody PersonForm personForm){
+    public ResponseEntity<PersonDto> create(@Valid @RequestBody PersonForm personForm){
         return ResponseEntity.created(service.create(personForm)).build();
     }
 
     @Transactional
     @PutMapping("/{id}")
-    public ResponseEntity<PersonDto> update(@PathVariable Long id, @RequestBody PersonForm personForm){
+    public ResponseEntity<PersonDto> update(@PathVariable Long id, @Valid  @RequestBody PersonForm personForm){
         return ResponseEntity.ok().body(service.update(id, personForm));
     }
 
