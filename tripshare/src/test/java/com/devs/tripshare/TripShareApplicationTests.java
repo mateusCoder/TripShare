@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TripShareApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void main(){
+		TripShareApplication.main(new String[] {});
 	}
 
 }

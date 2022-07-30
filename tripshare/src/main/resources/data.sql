@@ -15,3 +15,10 @@ INSERT INTO Trip(name, distance, fuel_Use, fuel_Price, date) VALUES
 ('Sem Rosa', 80.0, 12.5, 5.50, '2022-08-30'),
 ('São Paulo', 380.0, 14, 5.50, '2022-09-30'),
 ('Limeira', 60.0, 13.5, 5.50, '2022-10-30');
+
+INSERT INTO Ride(daily_precimal, trip_id) VALUES
+(16.59, 1),
+(13.26, 3),
+(16.59, 4),
+(16.59, 5),
+(13.26, 6);
