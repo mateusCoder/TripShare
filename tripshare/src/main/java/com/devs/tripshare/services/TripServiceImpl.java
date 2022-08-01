@@ -62,11 +62,6 @@ public class TripServiceImpl implements TripService{
     }
 
     public Trip checkExistence(Long id){
-        Optional<Trip> trip = repository.findById(id);
-        if(trip.isPresent()){
-            return trip.get();
-        }else{
-            throw new ObjectNotFound("Trip not found!");
-        }
+        return repository.findById(id).orElseThrow(() -> new ObjectNotFound("Trip not found!"));
     }
 }
