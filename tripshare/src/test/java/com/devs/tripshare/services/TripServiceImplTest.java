@@ -3,6 +3,7 @@ package com.devs.tripshare.services;
 import com.devs.tripshare.builder.TripBuilder;
 import com.devs.tripshare.dto.trip.TripDto;
 import com.devs.tripshare.entities.Trip;
+import com.devs.tripshare.exceptions.ObjectNotFound;
 import com.devs.tripshare.repository.TripRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +28,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-//@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class TripServiceImplTest {
 
@@ -74,6 +75,15 @@ class TripServiceImplTest {
     }
 
     @Test
+    void create(){
+        when(tripRepository.save(any())).thenReturn(TripBuilder.getTrip());
+
+        tripService.create(TripBuilder.getTripForm());
+
+        verify(tripRepository, times(1)).save(any());
+    }
+
+    @Test
     void update() {
 
         when(tripRepository.findById(anyLong())).thenReturn(Optional.of(TripBuilder.getTrip()));
@@ -99,16 +109,14 @@ class TripServiceImplTest {
 
     @Test
     void throwExceptionWhenTripNotFound() {
-        when(tripRepository.findById(anyLong())).thenThrow(new RuntimeException("Trip not found!"));
+
+        when(tripRepository.findById(anyLong())).thenThrow(new ObjectNotFound("Trip not found!"));
 
         try {
-
             tripService.checkExistence(anyLong());
-
         }catch(Exception e){
-
+            assertEquals(ObjectNotFound.class, e.getClass());
             assertEquals("Trip not found!", e.getMessage());
-
         }
     }
 }
