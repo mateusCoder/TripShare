@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -18,4 +19,5 @@ public class RideDto {
     private List<Person> crewMembers;
     private Trip trip;
     private BigDecimal dailyPrecimal;
+    private LocalDate date;
 }

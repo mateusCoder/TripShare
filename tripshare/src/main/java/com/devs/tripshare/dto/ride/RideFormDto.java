@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -18,5 +19,5 @@ public class RideFormDto {
 
     @NotNull
     private Long tripId;
-
+    private LocalDate date;
 }

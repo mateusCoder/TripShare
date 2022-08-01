@@ -25,6 +25,4 @@ public class TripForm {
     @NotNull
     private Double fuelPrice;
 
-    @NotNull
-    private LocalDate date;
 }
