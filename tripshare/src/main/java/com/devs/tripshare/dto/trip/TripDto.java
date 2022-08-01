@@ -16,5 +16,4 @@ public class TripDto {
     private Double distance;
     private Double fuelUse;
     private Double fuelPrice;
-    private LocalDate date;
 }

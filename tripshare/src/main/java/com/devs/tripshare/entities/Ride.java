@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -17,7 +18,7 @@ public class Ride {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @ManyToMany
     private List<Person> crewMembers;
 
     @OneToOne
@@ -25,5 +26,7 @@ public class Ride {
     private Trip trip;
 
     private BigDecimal dailyPrecimal;
+
+    private LocalDate date;
 
 }

@@ -1,6 +1,5 @@
 package com.devs.tripshare.services;
 
-import com.devs.tripshare.dto.person.PersonDto;
 import com.devs.tripshare.dto.ride.RideDto;
 import com.devs.tripshare.dto.ride.RideFormDto;
 import com.devs.tripshare.entities.Person;
@@ -9,12 +8,9 @@ import com.devs.tripshare.entities.Trip;
 import com.devs.tripshare.repository.PersonRepository;
 import com.devs.tripshare.repository.RideRepository;
 import com.devs.tripshare.repository.TripRepository;
-import lombok.RequiredArgsConstructor;
-import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -24,7 +20,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class RideServiceImpl implements RideService{
@@ -37,6 +32,7 @@ public class RideServiceImpl implements RideService{
 
     @Autowired
     private TripRepository tripRepository;
+
 
     @Autowired
     private ModelMapper modelMapper;
@@ -73,6 +69,7 @@ public class RideServiceImpl implements RideService{
         ride.setCrewMembers(crewMembers);
         ride.setTrip(trip);
         ride.setDailyPrecimal(finalPrice);
+        ride.setDate(rideFormDto.getDate());
 
         rideRepository.save(ride);
 

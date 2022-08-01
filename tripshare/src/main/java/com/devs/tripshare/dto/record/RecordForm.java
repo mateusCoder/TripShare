@@ -1,4 +1,4 @@
-package com.devs.tripshare.dto.trip;
+package com.devs.tripshare.dto.record;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,9 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TripForm {
+public class RecordForm {
 
-    private Long id;
     private String name;
-    private Double distance;
-    private Double fuelUse;
-    private Double fuelPrice;
+    private LocalDate initialDate;
+    private LocalDate finalDate;
 }
