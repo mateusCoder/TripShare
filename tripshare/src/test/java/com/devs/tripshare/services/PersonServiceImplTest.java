@@ -49,7 +49,7 @@ class PersonServiceImplTest {
     }
 
     @Test
-    void findAll() {
+    void whenFindAllWithSuccess() {
         when(repository.findAll((Pageable) any())).thenReturn(PersonBuilder.getPagePerson());
 
         Pageable page = PageRequest.of(0, 100);
@@ -60,7 +60,7 @@ class PersonServiceImplTest {
     }
 
     @Test
-    void findById() {
+    void whenFindByIdWithSuccess() {
         when(repository.findById(anyLong())).thenReturn(Optional.of(PersonBuilder.getPerson()));
 
         PersonDto response = service.findById(id);
@@ -71,7 +71,7 @@ class PersonServiceImplTest {
     }
 
     @Test
-    void update() {
+    void whenUpdateWithSuccess() {
         when(repository.findById(anyLong())).thenReturn(Optional.of(PersonBuilder.getPerson()));
         when(repository.save(any())).thenReturn(PersonBuilder.getPerson());
 
@@ -84,7 +84,7 @@ class PersonServiceImplTest {
     }
 
     @Test
-    void deleteById() {
+    void whenDeleteByIdWithSuccess() {
         when(repository.findById(anyLong())).thenReturn(Optional.of(PersonBuilder.getPerson()));
         doNothing().when(repository).deleteById(anyLong());
 
@@ -95,7 +95,7 @@ class PersonServiceImplTest {
     }
 
     @Test
-    void create() {
+    void whenCreateWithSuccess() {
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 
@@ -107,7 +107,7 @@ class PersonServiceImplTest {
     }
 
     @Test
-    void checkExistence(){
+    void whenCheckExistenceOfPersonWithSuccess(){
         when(repository.findById(anyLong())).thenReturn(Optional.of(PersonBuilder.getPerson()));
     }
 }
