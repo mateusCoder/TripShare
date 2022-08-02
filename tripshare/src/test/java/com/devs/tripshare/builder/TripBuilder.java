@@ -23,7 +23,6 @@ public class TripBuilder {
                 .distance(DISTANCE)
                 .fuelUse(FUELUSE)
                 .fuelPrice(FUELPRICE)
-                .date(DATE)
                 .build();
     }
 
@@ -35,7 +34,6 @@ public class TripBuilder {
                 .distance(DISTANCE)
                 .fuelUse(FUELUSE)
                 .fuelPrice(FUELPRICE)
-                .date(DATE)
                 .build();
     }
 
@@ -46,7 +44,6 @@ public class TripBuilder {
                 .distance(DISTANCE)
                 .fuelUse(FUELUSE)
                 .fuelPrice(FUELPRICE)
-                .date(DATE)
                 .build();
     }
 
