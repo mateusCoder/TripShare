@@ -1,16 +1,16 @@
 package com.devs.tripshare.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 public class Ride {
 
@@ -18,7 +18,7 @@ public class Ride {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @ManyToMany
     private List<Person> crewMembers;
 
     @OneToOne
@@ -26,5 +26,7 @@ public class Ride {
     private Trip trip;
 
     private BigDecimal dailyPrecimal;
+
+    private LocalDate date;
 
 }

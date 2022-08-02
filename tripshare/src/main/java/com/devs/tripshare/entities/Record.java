@@ -1,29 +1,30 @@
 package com.devs.tripshare.entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
-public class Trip {
+public class Record {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 
-    private Double distance;
+    @OneToMany
+    private Set<Ride> listOfRides;
 
-    private Double fuelUse;
-
-    private Double fuelPrice;
+    private BigDecimal totalPriceRides;
+    private LocalDate initialDate;
+    private LocalDate finalDate;
 }

@@ -1,29 +1,21 @@
-package com.devs.tripshare.entities;
+package com.devs.tripshare.dto.trip;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Entity
-public class Trip {
+public class TripDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private Double distance;
-
     private Double fuelUse;
-
     private Double fuelPrice;
 }

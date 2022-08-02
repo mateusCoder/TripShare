@@ -1,26 +1,30 @@
-package com.devs.tripshare.dto.person;
+package com.devs.tripshare.dto.trip;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonForm {
+@Builder
+public class TripForm {
 
     @NotBlank
     private String name;
 
     @NotNull
-    private boolean driver;
+    private Double distance;
 
-    @NotBlank
-    private String email;
+    @NotNull
+    private Double fuelUse;
 
-    @NotBlank
-    private String password;
+    @NotNull
+    private Double fuelPrice;
+
 }
