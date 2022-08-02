@@ -69,13 +69,6 @@ public class PersonServiceImpl implements PersonService{
     }
 
     private Person checkExistence(Long id){
-        Optional<Person> person = personRepository.findById(id);
-        if(person.isPresent()){
-            return person.get();
-        } else {
-            throw new ObjectNotFound("Person not found");
-        }
+        return personRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Person not found"));
     }
-
-
 }

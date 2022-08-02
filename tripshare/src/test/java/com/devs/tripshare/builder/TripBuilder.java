@@ -14,7 +14,6 @@ public class TripBuilder {
     private static final Double DISTANCE = 90.0;
     private static final Double FUELUSE = 15.0;
     private static final Double FUELPRICE = 5.50;
-    private static final LocalDate DATE = LocalDate.now();
 
     public static Trip getTrip(){
         return Trip.builder()
@@ -23,7 +22,6 @@ public class TripBuilder {
                 .distance(DISTANCE)
                 .fuelUse(FUELUSE)
                 .fuelPrice(FUELPRICE)
-                .date(DATE)
                 .build();
     }
 
@@ -35,7 +33,6 @@ public class TripBuilder {
                 .distance(DISTANCE)
                 .fuelUse(FUELUSE)
                 .fuelPrice(FUELPRICE)
-                .date(DATE)
                 .build();
     }
 
@@ -46,7 +43,6 @@ public class TripBuilder {
                 .distance(DISTANCE)
                 .fuelUse(FUELUSE)
                 .fuelPrice(FUELPRICE)
-                .date(DATE)
                 .build();
     }
 

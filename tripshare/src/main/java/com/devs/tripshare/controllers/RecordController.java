@@ -18,6 +18,4 @@ public class RecordController {
     public ResponseEntity<RecordDto> findAll(@RequestBody RecordForm form){
         return ResponseEntity.ok().body(service.findAll(form));
     }
-
-
 }
