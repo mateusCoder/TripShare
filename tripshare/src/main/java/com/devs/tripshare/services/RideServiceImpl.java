@@ -73,7 +73,7 @@ public class RideServiceImpl implements RideService{
 
         rideRepository.save(ride);
 
-        return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ride.getId()).toUri();
+        return ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build(ride.getId());
     }
 
     @Override
@@ -84,12 +84,7 @@ public class RideServiceImpl implements RideService{
 
 
     private Ride checkExistence(Long id){
-        Optional<Ride> ride = rideRepository.findById(id);
-        if( ride.isPresent()){
-            return ride.get();
-        }else{
-            throw new ObjectNotFound("Person Not found");
-        }
+        return rideRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Ride Not found"));
     }
 
 }

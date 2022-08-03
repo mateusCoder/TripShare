@@ -13,6 +13,7 @@ import javax.persistence.Id;
 @Getter
 @Builder
 @Entity
+@Builder
 public class Person {
 
     @Id
