@@ -86,5 +86,4 @@ public class RideServiceImpl implements RideService{
     private Ride checkExistence(Long id){
         return rideRepository.findById(id).orElseThrow(() -> new ObjectNotFound("Ride Not found"));
     }
-
 }
