@@ -12,6 +12,10 @@
   </a>
   <a href="https://www.microsoft.com/pt-br/windows/?r=1" target="_blank" rel="noreferrer" rel="noopener">
   <img src="https://img.shields.io/badge/Windows-017AD7?style=for-the-badge&logo=windows&logoColor=white" alt="Windows"/>
+  </a>
+  <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer" rel="noopener">
+  <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  </a>
 </div></br>
 
 <div align="center">
