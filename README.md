@@ -158,6 +158,22 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         </sub>
       </a>
     </td>
+        <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/82002133?v=4" width="100px;" alt="Foto do Otávio Mello"/><br>
+        <sub>
+          <div align="center">
+            <b>Otávio Mello</b></br></br>
+            <a href="https://www.linkedin.com/in/ot%C3%A1viomelloalmeida/" target="_blank" rel="noreferrer" rel="noopener">
+              <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin"/>
+            </a></br>
+            <a href="mailto:otaviomellocv@gmail.com" target="_blank" rel="noreferrer" rel="noopener">
+              <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/></br>
+            </a>
+          </div>
+        </sub>
+      </a>
+    </td>
     <td align="center">
       <a href="#">
         <img src="https://avatars.githubusercontent.com/u/51124985?v=4" width="100px;" alt="Foto do Yhonathan Pavan"/><br>
