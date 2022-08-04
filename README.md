@@ -81,7 +81,7 @@ $ code .
 ## 🧑‍🚀 Postman
 
 Para acessar a collection TripShare, baixe o arquivo e siga as etapas:
-1. [TripShareCollection](https://github.com/mateusCoder/TripShare/tripShareCollection.json)
+1. [TripShareCollection](https://github.com/mateusCoder/TripShare/blob/master/TripShareCollection.json)
 2. Abra a plataforma [Postman](https://www.postman.com/product/what-is-postman/)
 3. Em seguida importe, clique em Import e selecione o arquivo TripShareCollection.
 4. Por fim, execute o aplicação TripShareApplication, após isso a plataforma estará pronta para uso. 
