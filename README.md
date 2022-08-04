@@ -125,8 +125,8 @@ Foram usadas as seguintes tecnologias e ferramentas para Testes da API:
 Foram usadas as seguintes tecnologias e ferramentas para a construção da API: 
 * [Java](https://www.java.com/pt-BR/) - Linguagem de Programação
 * [SpringBoot](https://spring.io/) - FrameWork Java
+* [PostgreSQL](https://www.postgresql.org/) - Sistema de gerenciamento de banco de dados relacional
 * [Git](https://git-scm.com/) - Ferramenta de Versionamento de Código
-* [H2](https://www.h2database.com/html/main.html) - Sistema de gerenciamento de banco de dados relacional
 * [IntelliJIDEA](https://www.jetbrains.com/pt-br/idea/) - IDE (Ambiente de desenvolvimento integrado)
 * [Postman](https://www.postman.com/) - Plataforma da API
 * [Swagger](https://swagger.io/tools/swagger-editor/) - Editar de design da API
