@@ -78,6 +78,12 @@ $ code .
 # A aplicação será aberta na porta:8080 - acesse http://localhost:8080
 ```
 
+## 📃 Swagger
+
+Para acessar a documentação BicoOn, execute a aplicação e acesse o link:
+
+   [TripShare](http://localhost:8080/swagger-ui/index.html#/)
+
 ## 🧑‍🚀 Postman
 
 Para acessar a collection TripShare, baixe o arquivo e siga as etapas:
