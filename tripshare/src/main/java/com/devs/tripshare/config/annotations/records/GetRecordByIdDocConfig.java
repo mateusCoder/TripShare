@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "List a specific record", description = "This method returns a specific trip. Use the record id.", tags = {"Record"})
+@Operation(summary = "List a specific record", description = "This method returns a specific record. Use the record id.", tags = {"Record"})
 @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Ok", content = @Content(schema = @Schema(implementation = RecordDto.class), mediaType = "application/json")),
                        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = StandardError.class), mediaType = "application/json"))} )
 public @interface GetRecordByIdDocConfig {

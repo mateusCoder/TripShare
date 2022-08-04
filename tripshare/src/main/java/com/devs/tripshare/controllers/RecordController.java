@@ -15,7 +15,7 @@ public class RecordController {
 
     private final RecordServiceImpl service;
 
-    @GetMapping
+    @PostMapping
     @GetRecordByIdDocConfig
     public ResponseEntity<RecordDto> findAll(@RequestBody RecordForm form){
         return ResponseEntity.ok().body(service.findAll(form));
