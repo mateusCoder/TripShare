@@ -1,4 +1,4 @@
-package com.devs.tripshare.config.annotations.persons;
+package com.devs.tripshare.config.annotations.trips;
 
 import com.devs.tripshare.exceptions.StandardError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -14,9 +14,8 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "List all persons paginated", description = "This method returns a pagination of all registered people.", tags = {"Person"})
+@Operation(summary = "delete a specific trip", description = "This method delete a specific trip. Use the trip id.", tags = {"Trip"})
 @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Ok", content = @Content(mediaType = "application/json")),
-                       @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = StandardError.class), mediaType = "application/json"))})
-public @interface GetAllPersonDocConfig {
-
+                       @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = StandardError.class), mediaType = "application/json"))} )
+public @interface DeleteTripDocConfig {
 }

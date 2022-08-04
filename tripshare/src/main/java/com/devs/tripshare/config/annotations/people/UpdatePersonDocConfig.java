@@ -1,4 +1,4 @@
-package com.devs.tripshare.config.annotations.persons;
+package com.devs.tripshare.config.annotations.people;
 
 import com.devs.tripshare.exceptions.FieldMessage;
 import com.devs.tripshare.exceptions.StandardError;
@@ -16,9 +16,9 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "Save a person", description = "This method save a new person in your database", tags = {"Person"})
+@Operation(summary = "change a specific person", description = "This method change a specific person. Use the person's id.", tags = {"Person"})
 @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Ok", content = @Content(mediaType = "application/json")),
-        @ApiResponse(responseCode = "400", description = "Bad Requests", content = @Content(array = @ArraySchema(schema = @Schema(implementation = FieldMessage.class)), mediaType = "application/json")),
-        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = StandardError.class), mediaType = "application/json"))} )
-public @interface SavePersonDocConfig {
+                       @ApiResponse(responseCode = "400", description = "Bad Requests", content = @Content(array = @ArraySchema(schema = @Schema(implementation = FieldMessage.class)), mediaType = "application/json")),
+                       @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = StandardError.class), mediaType = "application/json"))} )
+public @interface UpdatePersonDocConfig {
 }

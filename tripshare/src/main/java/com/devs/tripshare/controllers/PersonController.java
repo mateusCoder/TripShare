@@ -1,17 +1,9 @@
 package com.devs.tripshare.controllers;
 
-import com.devs.tripshare.config.annotations.persons.*;
+import com.devs.tripshare.config.annotations.people.*;
 import com.devs.tripshare.dto.person.PersonDto;
 import com.devs.tripshare.dto.person.PersonForm;
-import com.devs.tripshare.exceptions.FieldMessage;
-import com.devs.tripshare.exceptions.StandardError;
 import com.devs.tripshare.services.PersonServiceImpl;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
