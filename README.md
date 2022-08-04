@@ -18,7 +18,7 @@
   <img src="TripShareLogo.jpg" alt="TripShare" height="350px">
 </div></br>
 
-> O TripShare é uma plataforma de controle de gastos que calcula a despesa de cada pessoa cadastrada no sistema a partir de uma ou mais viagens cadastradas.
+> O TripShare é uma plataforma que controla gastos de combustivel de acordo com os dados cadastrados de distância, consumo do veiculo, preço do combustível e tripulantes do carro, a partir disso é possível pelo nome do tripulante e um intervalo de datas, consultar quais datas aquela pessoa viajou e qual o valor total das mesmas.
 
 ## ⚙️ Funcionalidades
 
@@ -49,7 +49,6 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 
 - [x] Documentação com Swagger
 - [ ] Segurança com JWT
-- [ ] Monitoramento com Actuator
 - [ ] Deploy no Heroku
 - [ ] Interface Gráfica
 
@@ -81,20 +80,11 @@ $ code .
 
 ## 🧑‍🚀 Postman
 
-Para acessar a collection BicoOn, baixe o arquivo e siga as etapas:
+Para acessar a collection TripShare, baixe o arquivo e siga as etapas:
 1. [TripShareCollection](https://github.com/mateusCoder/TripShare/tripShareCollection.json)
 2. Abra a plataforma [Postman](https://www.postman.com/product/what-is-postman/)
 3. Em seguida importe, clique em Import e selecione o arquivo TripShareCollection.
 4. Por fim, execute o aplicação TripShareApplication, após isso a plataforma estará pronta para uso. 
-
-## 🔐 Segurança
-O projeto TripShare segue padrões de segurança API REST, sendo os seguintes endpoints liberados para acesso de qualquer usuario:
-```
-  POST - /tripShare/people     (O cadastro de usuários é aberto para que seja possível criar uma conta do tipo Pessoa) 
-  POST - /tripShare/trips      (O cadastro de viagens é aberto para que seja possível criar os parâmetros de viagens já definidas) 
-  POST - /tripShare/record     (A consulta de viagens por pessoa é liberada para que outras pessoas possam acessar)
-```
-Para acessar os endpoints restantes é necessário estar autenticado. 
 
 ## 📌 EndPoints
 Para acessar os endpoints da Entidade Pessoa:
@@ -122,7 +112,7 @@ Para acessar os endpoints da Entidade Ride:
 ```
 Para acessar os endpoints da Entidade Record:
 ```
-  GET - /tripShare/records         (Lista as datas e o preço total das corridas de acordo com o intervalo de tempo e pessoa infomada) 
+  GET - /tripShare/records         (Lista as datas e o preço total das corridas de acordo com o intervalo de tempo e pessoa informada) 
 ```
 
 ## 🕷️ Testes
@@ -142,7 +132,7 @@ Foram usadas as seguintes tecnologias e ferramentas para a construção da API:
 * [Swagger](https://swagger.io/tools/swagger-editor/) - Editar de design da API
 * [Windows](https://www.microsoft.com/pt-br/windows/?r=1) - Sistema Operacional
 
-## ☎️ Suporte BicoOn
+## ☎️ Suporte TripShare
   
 Caso tenha dúvidas, reclamações ou sugestões, contate os desenvolvedores. 
 
