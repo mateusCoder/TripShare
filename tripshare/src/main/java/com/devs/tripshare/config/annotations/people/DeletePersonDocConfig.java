@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "delete a specific person", description = "This method delete a specific person. Use the person's id.", tags = {"Person"})
+@Operation(summary = "delete a specific person", description = "This method delete a specific person. Use the person id.", tags = {"Person"})
 @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Ok", content = @Content(mediaType = "application/json")),
                        @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = StandardError.class), mediaType = "application/json"))} )
 public @interface DeletePersonDocConfig {

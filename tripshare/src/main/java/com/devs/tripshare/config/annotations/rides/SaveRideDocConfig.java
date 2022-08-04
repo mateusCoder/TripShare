@@ -1,4 +1,4 @@
-package com.devs.tripshare.config.annotations.people;
+package com.devs.tripshare.config.annotations.rides;
 
 import com.devs.tripshare.exceptions.FieldMessage;
 import com.devs.tripshare.exceptions.StandardError;
@@ -16,9 +16,9 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Operation(summary = "Save a person", description = "This method save a new person in your database", tags = {"Person"})
+@Operation(summary = "Save a ride", description = "This method save a new ride in your database", tags = {"Ride"})
 @ApiResponses(value = {@ApiResponse(responseCode = "201", description = "Created", content = @Content(mediaType = "application/json")),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(array = @ArraySchema(schema = @Schema(implementation = FieldMessage.class)), mediaType = "application/json")),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = StandardError.class), mediaType = "application/json"))} )
-public @interface SavePersonDocConfig {
+public @interface SaveRideDocConfig {
 }
